@@ -15,7 +15,7 @@ spec:
   ipFamilyPolicy: SingleStack
   ports:
   - appProtocol: http
-    name: htt
+    name: http
     nodePort: 30275
     port: 80
     protocol: TCP

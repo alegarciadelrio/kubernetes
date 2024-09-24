@@ -33,7 +33,7 @@ spec:
       - args:
         - /nginx-ingress-controller
         - --election-id=nginx-ingress-leader
-        - --controller-class=k8s.io/nginx-ingress
+        - --controller-class=nginx.org/ingress-controller
         - --watch-ingress-without-class=true
         - --configmap=$(POD_NAMESPACE)/nginx-ingress-controller
         - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services
