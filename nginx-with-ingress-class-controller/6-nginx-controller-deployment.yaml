@@ -32,8 +32,8 @@ spec:
       containers:
       - args:
         - /nginx-ingress-controller
-        - --election-id=ingress-nginx-leader
-        - --controller-class=k8s.io/ingress-nginx
+        - --election-id=nginx-ingress-leader
+        - --controller-class=k8s.io/nginx-ingress
         - --watch-ingress-without-class=true
         - --configmap=$(POD_NAMESPACE)/nginx-ingress-controller
         - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services

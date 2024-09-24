@@ -1,0 +1,74 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  data:
+    hsts: "false"
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"hsts":"false"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"nginx-ingress","app.kubernetes.io/name":"nginx-ingress"},"name":"nginx-ingress-controller","namespace":"nginx-ingress"}}
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: nginx-ingress
+      app.kubernetes.io/name: nginx-ingress
+    name: nginx-ingress-controller
+    namespace: nginx-ingress
+- apiVersion: v1
+  data:
+    ca.crt: |
+      -----BEGIN CERTIFICATE-----
+      MIIDBjCCAe6gAwIBAgIBATANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwptaW5p
+      a3ViZUNBMB4XDTI0MDkxNjE4NDkzM1oXDTM0MDkxNTE4NDkzM1owFTETMBEGA1UE
+      AxMKbWluaWt1YmVDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMuV
+      mVopAMMtwG48AaLC+z0YnaxLF2wFTC9ztdHmRyO01l4xuGVtJ26zNTuX/YqMjDRW
+      ruS3GcTeMZx1AcY14fzIoiTnvQdTd5KjQNSWalVIMX1WYwvrQFMLCHJ+aUTZYjLE
+      wCbTi74ir7yTaR5uxpTNjUBvMZS10fSW3z4FYUlr2MOO5I+/3knu8Gs99B/s0PFw
+      UEGRPkxr0f4yy7skgFr1Mn3foAnUMHWpnzDxyJeaLBdCz0XCrGIYDVeIv2pvL1QC
+      e6GKygj+f3tQS9tDzDFWUh7FDvIUFbigsnVl3F5vlh97wFbsOONiCc1D+gEGFMeO
+      oAjWrSiQ9x0XaNAZzqECAwEAAaNhMF8wDgYDVR0PAQH/BAQDAgKkMB0GA1UdJQQW
+      MBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQW
+      BBT7beFAzHxa4x4n0B/WRBVtJm87vzANBgkqhkiG9w0BAQsFAAOCAQEAR73EoKz7
+      IWlzkrtFyDdr1tjfPysO2KYn7jw3KSKMkHLZrD2ik7wfzPCCMTGpSTmqPpn0UpqQ
+      44qTZyI3WLPp4HGJxB7GKbhjc1D+aol+5DBvh2+g8SDOnjTUrERBS2ibNEjKj3Fk
+      gSygYZjzW0VQX/511qIZ9YvsTJqnNfWfGl3CQs6x/4Nr9a8TlrXPfd3vTN7TePX0
+      XO7kTmviSSgAY+X0RL+O2LU0i0EXgLf8eUYbt1L4EhKN7JmcBTTlywkSiUqj41iA
+      sLa0r/2n4Nypu5Nn3j0sIY1Uu9nwrdtG57Q3X73vXCJe82b21+lttGeuu8H75mAI
+      uORCw6PAlolMxQ==
+      -----END CERTIFICATE-----
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubernetes.io/description: Contains a CA bundle that can be used to verify the
+        kube-apiserver when using internal endpoints such as the internal service
+        IP or kubernetes.default.svc. No other usage is guaranteed across distributions
+        of Kubernetes clusters.
+    name: kube-root-ca.crt
+    namespace: nginx-ingress
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"nginx-ingress","app.kubernetes.io/name":"nginx-ingress"},"name":"tcp-services","namespace":"nginx-ingress"}}
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: nginx-ingress
+      app.kubernetes.io/name: nginx-ingress
+    name: tcp-services
+    namespace: nginx-ingress
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"nginx-ingress","app.kubernetes.io/name":"nginx-ingress"},"name":"udp-services","namespace":"nginx-ingress"}}
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: nginx-ingress
+      app.kubernetes.io/name: nginx-ingress
+    name: udp-services
+    namespace: nginx-ingress
+kind: List
+metadata:
+  resourceVersion: ""
