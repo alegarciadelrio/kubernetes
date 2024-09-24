@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: webapp-hello-service-v1
+spec:
+  selector:
+    app: webapp-hello-v1
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
