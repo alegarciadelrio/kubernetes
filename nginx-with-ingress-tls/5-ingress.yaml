@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tls-ingress
+spec:
+  tls:
+  - hosts:
+      - test.rutamania.com
+    secretName: secret-tls
+  rules:
+  - host: test.rutamania.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: webapp-hello-service-v1
+            port:
+              number: 80
