@@ -13,3 +13,6 @@ Creates in another namespace the controller. Then creates 2 pods with 2 services
 
 ## service-account-for-eks-azure-devops
 Service account to connect EKS to Azure DevOps.
+
+## installation-script-ubuntu
+Kubernetes installation script on Ubuntu Server.
