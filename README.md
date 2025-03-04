@@ -1,5 +1,11 @@
 # Kubernetes Toolbox
-This repository is a set of Kubernetes examples.
+
+<h3>🔭 This repository is a set of Kubernetes examples.</h3>
+<p>
+  <img alt="bash" src="https://img.shields.io/badge/-Bash-grey?style=flat-square&logo=linux&logoColor=white" />
+  <img alt="Kubernetes" src="https://img.shields.io/badge/-Kubernetes-blue?style=flat-square&logo=kubernetes&logoColor=white" />
+</p>
+
 
 ## nginx-with-ingress
 Creates 2 pods with 2 services attached as ClusterIp, then creates an ingress to forward the traffic based on the host v1 or v2.
