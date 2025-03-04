@@ -3,7 +3,7 @@
 🔭 This repository is a set of Kubernetes examples.
 <p>
   <img alt="bash" src="https://img.shields.io/badge/-Bash-grey?style=flat-square&logo=linux&logoColor=white" />
-  <img alt="Kubernetes" src="https://img.shields.io/badge/-Kubernetes-%326CE5?style=flat-square&logo=kubernetes&logoColor=white" />
+  <img alt="Kubernetes" src="https://img.shields.io/badge/Kubernetes-%23326CE5?style=flat-square&logo=kubernetes&logoColor=white" />
   <img alt="Amazon EKS" src="https://img.shields.io/badge/Amazon%20EKS-%23FF9900?style=flat-square&logo=amazoneks&logoColor=white" />
 </p>
 
