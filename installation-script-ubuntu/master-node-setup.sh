@@ -39,11 +39,11 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 sudo apt update -y
 sudo apt install -y kubeadm kubelet kubectl
 sudo apt-mark hold kubeadm kubelet kubectl
-kubeadm vers
+kubeadm version
 
 # Disable swap
 sudo swapoff -a
-sed -i 's/^\/swap/#\/swap/' /etc/fstab
+sudo sed -i 's/^\/swap/#\/swap/' /etc/fstab
 
 
 # Enable the modules
