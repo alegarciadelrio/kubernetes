@@ -1,3 +1,4 @@
+## Basic Kubernetes deployment
 
 ```mermaid
 flowchart TD
@@ -32,13 +33,15 @@ flowchart TD
         contN --- resN[Resources\nRequests: 64Mi, 200m\nLimits: 128Mi, 500m]
     end
     
-    classDef deployment fill:#e6f7ff,stroke:#333,stroke-width:1px
-    classDef service fill:#ffe6cc,stroke:#333,stroke-width:1px
-    classDef pod fill:#e6ffe6,stroke:#333,stroke-width:1px
-    classDef traffic fill:#f5f5f5,stroke:#333,stroke-width:1px
+    classDef deployment fill:#e6f7ff,stroke:#333,stroke-width:1px,color:#000000
+    classDef service fill:#ffe6cc,stroke:#333,stroke-width:1px,color:#000000
+    classDef pod fill:#e6ffe6,stroke:#333,stroke-width:1px,color:#000000
+    classDef traffic fill:#f5f5f5,stroke:#333,stroke-width:1px,color:#000000
+    classDef resources fill:#ffffff,stroke:#333,stroke-width:1px,color:#000000
     
     class dep deployment
     class svc,sel,portMap service
     class pod1,podN pod
     class extTraffic traffic
+    class res1,resN resources
 ```
