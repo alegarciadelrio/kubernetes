@@ -1,6 +1,6 @@
 # Basic Kubernetes deployment
 
-## Objective
+## Documentation
 Creates 6 pods with 1 service attached as NodePort. Ideally for local testing purposes. 
 
 ### 1-webapp-hello-v1.yaml
