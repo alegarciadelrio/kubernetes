@@ -1,12 +1,15 @@
 # Kubernetes Toolbox
 
-🔭 This repository is a set of Kubernetes examples.
+## Documentation
+🔭 Learn how to get started with Kubernetes Toolbox and then dive deeper into other advanced topics.
 <p>
   <img alt="bash" src="https://img.shields.io/badge/-Bash-grey?style=flat-square&logo=gnubash&logoColor=white" />
   <img alt="Kubernetes" src="https://img.shields.io/badge/Kubernetes-%23326CE5?style=flat-square&logo=kubernetes&logoColor=white" />
   <img alt="Amazon EKS" src="https://img.shields.io/badge/Amazon%20EKS-%23FF9900?style=flat-square&logo=amazoneks&logoColor=white" />
 </p>
 
+## nginx-with-service
+Creates 6 pods with 1 service attached as NodePort. Ideally for local testing purposes. 
 
 ## nginx-with-ingress
 Creates 2 pods with 2 services attached as ClusterIp, then creates an ingress to forward the traffic based on the host v1 or v2.
