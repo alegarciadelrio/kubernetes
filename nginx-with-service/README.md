@@ -1,7 +1,7 @@
 # Basic Kubernetes Deployment
 
 ## Documentation
-Learn how to get started with Font Awesome and then dive deeper into other advanced topics. This deployment creates 6 pods with 1 service attached as NodePort. Ideally for local testing purposes. 
+This deployment creates 6 pods with 1 service attached as NodePort. Ideally for local testing purposes. 
 
 ### 1-webapp-hello-v1.yaml
 It does the nginx pod deployment.
