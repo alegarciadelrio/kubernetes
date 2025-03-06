@@ -1,4 +1,4 @@
-# Basic Kubernetes deployment
+# Basic Kubernetes Deployment
 
 ## Documentation
 Creates 6 pods with 1 service attached as NodePort. Ideally for local testing purposes. 
