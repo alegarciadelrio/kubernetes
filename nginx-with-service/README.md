@@ -1,14 +1,23 @@
-## Basic Kubernetes deployment
+# Basic Kubernetes deployment
+
+## nginx-with-ingress
+Creates 6 pods with 1 service attached as NodePort.
+
+### 1-webapp-hello-v1.yaml
+It does the nginx pod deployment.
+
+### 2-webapp-hello-service-v1.yaml
+It does the service nodport deployment.
 
 ```mermaid
 flowchart TD
     %% External traffic at the top
-    extTraffic[External Traffic\nNodePort: 30080] --> svc
+    extTraffic["External Traffic<br>NodePort: 30080"] --> svc
     
     %% Service at the top
     subgraph "Service: webapp-hello-service-v1"
-        svc[webapp-hello-service-v1\nType: NodePort] --> sel[Selector: app=webapp-hello-v1]
-        svc --> portMap[Ports: 80:8080\nNodePort: 30080]
+        svc["webapp-hello-service-v1<br>Type: NodePort"] --> sel["Selector: app=webapp-hello-v1"]
+        svc --> portMap["Ports: 80:8080<br>NodePort: 30080"]
     end
     
     %% Connection between Service and Pods
@@ -17,20 +26,20 @@ flowchart TD
     
     subgraph "Deployment: webapp-hello-v1"
         direction TB
-        dep[webapp-hello-v1\nReplicas: 2] --> pod1[Pod 1]
-        dep --> podN[Pod N]
+        dep["webapp-hello-v1<br>Replicas: 2"] --> pod1["Pod 1"]
+        dep --> podN["Pod N"]
         
         subgraph "Pod Template"
-            pod1 --> cont1[Container: webapp-hello\nImage: gcr.io/google-samples/hello-app:1.0\nPort: 8080]
-            podN --> contN[Container: webapp-hello\nImage: gcr.io/google-samples/hello-app:1.0\nPort: 8080]
+            pod1 --> cont1["Container: webapp-hello<br>Image: gcr.io/google-samples/hello-app:1.0<br>Port: 8080"]
+            podN --> contN["Container: webapp-hello<br>Image: gcr.io/google-samples/hello-app:1.0<br>Port: 8080"]
         end
         
         classDef resources fill:#ffffff,stroke:#333,stroke-width:1px
         class cont1,contN resources
         
         %% Resources
-        cont1 --- res1[Resources\nRequests: 64Mi, 200m\nLimits: 128Mi, 500m]
-        contN --- resN[Resources\nRequests: 64Mi, 200m\nLimits: 128Mi, 500m]
+        cont1 --- res1["Resources<br>Requests: 64Mi, 200m<br>Limits: 128Mi, 500m"]
+        contN --- resN["Resources<br>Requests: 64Mi, 200m<br>Limits: 128Mi, 500m"]
     end
     
     classDef deployment fill:#e6f7ff,stroke:#333,stroke-width:1px,color:#000000
