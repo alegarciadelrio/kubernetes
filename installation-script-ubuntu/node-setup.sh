@@ -84,6 +84,11 @@ sudo systemctl daemon-reload && sudo systemctl restart kubelet
 sudo sed -i 's/^disabled_plugins/#disabled_plugins/' /etc/containerd/config.toml
 sudo systemctl restart containerd.service
 
+############################## REPLACE WITH THE IP AND SERVERNAME ##############################
+sudo bash -c 'cat << 'EOF' >> /etc/hosts
+192.168.1.40 MASTERNODE
+EOF'
+
 ############################## REPLACE WITH THE COMMAND PROVIDED BY THE MASTER NODE ##############################
 # Start Kubeadm to join 
 sudo kubeadm join $MASTERNODE:6443 --token uyyjy3.******************** \
@@ -91,3 +96,5 @@ sudo kubeadm join $MASTERNODE:6443 --token uyyjy3.******************** \
 
 ############################## Run on the master node ##############################
 # kubectl taint nodes --all node.kubernetes.io/not-ready-
+# kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+
