@@ -3,16 +3,16 @@
 ## 📄 Documentation
 This directory contains Kubernetes configurations for deploying Nginx with TLS-enabled Ingress. It creates 1 pod with 1 service attached as ClusterIP, then creates an ingress to forward the traffic with TLS encryption.
 
-### 🌐 1-webapp-hello-v1.yaml
+### 1-webapp-hello-v1.yaml
 Deploys the hello-app application.
 
-### 🔌 3-webapp-hello-service-v1.yaml
+### 3-webapp-hello-service-v1.yaml
 Creates a ClusterIP service for the deployment.
 
-### 🚦 5-ingress.yaml
+### 5-ingress.yaml
 Creates an Ingress resource with TLS configuration that routes traffic to the service.
 
-### 🔐 6-secret.yaml
+### 6-secret.yaml
 Contains the TLS certificate and key as a Kubernetes Secret.
 
 ## 📋 Usage

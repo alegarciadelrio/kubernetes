@@ -3,46 +3,46 @@
 ## 📄 Documentation
 This directory contains Kubernetes configurations for deploying Nginx with a dedicated Ingress controller in a separate namespace. It creates the controller in another namespace, then creates 2 pods with 2 services attached as ClusterIP, after that creates an ingress to forward the traffic based on the host v1 or v2, and an ingress class pointing to the controller.
 
-### 🔍 1-nginx-namespace.yaml
+### 1-nginx-namespace.yaml
 Creates a dedicated namespace for the Nginx Ingress controller.
 
-### ⚙️ 2-nginx-configmap.yaml
+### 2-nginx-configmap.yaml
 Creates a ConfigMap for the Nginx Ingress controller configuration.
 
-### 🔑 3-nginx-service-account.yaml
+### 3-nginx-service-account.yaml
 Creates a ServiceAccount for the Nginx Ingress controller.
 
-### 🔒 4-nginx-clusterrole-binding.yaml
+### 4-nginx-clusterrole-binding.yaml
 Creates ClusterRole and ClusterRoleBinding for the Nginx Ingress controller.
 
-### 🔐 5-nginx-secret.yaml
+### 5-nginx-secret.yaml
 Creates a Secret for the Nginx Ingress controller.
 
-### 🚀 6-nginx-controller-deployment.yaml
+### 6-nginx-controller-deployment.yaml
 Deploys the Nginx Ingress controller.
 
-### 🔌 7-nginx-controller-service-admission.yaml
+### 7-nginx-controller-service-admission.yaml
 Creates a Service for the Nginx Ingress controller's admission webhook.
 
-### 🔌 8-nginx-controller-service.yaml
+### 8-nginx-controller-service.yaml
 Creates a Service for the Nginx Ingress controller.
 
-### 🌐 10-webapp-hello-v1.yaml
+### 10-webapp-hello-v1.yaml
 Deploys the first version of the hello-app application.
 
-### 🌐 11-webapp-hello-v2.yaml
+### 11-webapp-hello-v2.yaml
 Deploys the second version of the hello-app application.
 
-### 🔌 12-webapp-hello-service-v1.yaml
+### 12-webapp-hello-service-v1.yaml
 Creates a ClusterIP service for the v1 deployment.
 
-### 🔌 13-webapp-hello-service-v2.yaml
+### 13-webapp-hello-service-v2.yaml
 Creates a ClusterIP service for the v2 deployment.
 
-### 🏷️ 14-ingress-class.yaml
+### 14-ingress-class.yaml
 Defines the IngressClass resource that specifies which controller should implement the Ingress.
 
-### 🚦 15-ingress.yaml
+### 15-ingress.yaml
 Creates an Ingress resource that routes traffic based on the host header and uses the defined IngressClass.
 
 ## 📋 Usage

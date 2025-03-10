@@ -3,22 +3,22 @@
 ## 📄 Documentation
 This directory contains Kubernetes configurations for deploying Nginx with various volume configurations. It demonstrates different ways to mount volumes into containers, including ConfigMaps and downward API.
 
-### 🌐 01-pod.yaml
+### 01-pod.yaml
 Basic pod configuration for Nginx.
 
-### 💾 02-pod.yaml
+### 02-pod.yaml
 Pod with volume configuration.
 
-### 🔌 03-service-node-port.yaml
+### 03-service-node-port.yaml
 NodePort service for accessing the Nginx pods.
 
-### 📡 04-pod-downwardapi.yaml
+### 04-pod-downwardapi.yaml
 Pod with downward API volume, which allows the pod to access its own metadata.
 
-### ⚙️ 05-pod-configmap.yaml
+### 05-pod-configmap.yaml
 Pod with ConfigMap volume, which mounts the ConfigMap data as files in the container.
 
-### 📝 06-index-configmap.yaml
+### 06-index-configmap.yaml
 ConfigMap containing HTML content to be mounted in the Nginx pod.
 
 ## 📋 Usage

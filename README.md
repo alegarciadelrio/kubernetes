@@ -39,7 +39,7 @@ The repository is organized into several directories, each focusing on a specifi
 
 ## 🛠️ Installation
 
-### 🖥️ Master Node Setup
+### Master Node Setup
 
 The `installation-script-ubuntu/master-node-setup.sh` script automates the installation of Kubernetes on an Ubuntu server that will serve as the master node (control plane) of the cluster.
 
@@ -59,7 +59,7 @@ To use the script:
 2. Make the script executable: `chmod +x master-node-setup.sh`
 3. Run the script: `./master-node-setup.sh`
 
-### 🧩 Worker Node Setup
+### Worker Node Setup
 
 The `installation-script-ubuntu/node-setup.sh` script automates the installation of Kubernetes on Ubuntu servers that will serve as worker nodes in the cluster.
 
@@ -81,7 +81,7 @@ To use the script:
 
 ## 📋 Configuration Examples
 
-### 🌐 Nginx with Service
+### Nginx with Service
 
 The `nginx-with-service` directory contains configuration files for deploying Nginx with a NodePort service, making it accessible from outside the cluster.
 
@@ -98,7 +98,7 @@ kubectl apply -f nginx-with-service/2-webapp-hello-service-v1.yaml
 
 After applying, the application will be accessible at `http://<node-ip>:30080`.
 
-### 🚦 Nginx with Ingress
+### Nginx with Ingress
 
 The `nginx-with-ingress` directory contains configuration files for deploying Nginx with Ingress, allowing host-based routing.
 
@@ -123,7 +123,7 @@ After applying, the applications will be accessible at:
 
 Note: You'll need to add entries to your `/etc/hosts` file to map these hostnames to your cluster's IP address.
 
-### 🔒 Nginx with Ingress TLS
+### Nginx with Ingress TLS
 
 The `nginx-with-ingress-tls` directory contains configuration files for deploying Nginx with TLS-enabled Ingress. More info to test certificate: 
 https://segunale.blogspot.com/2024/09/self-signed-certificate-for-kubernetes.html
@@ -147,7 +147,7 @@ After applying, the application will be accessible at `https://test.rutamania.co
 
 Note: For testing with self-signed certificates, refer to the guide at https://segunale.blogspot.com/2024/09/self-signed-certificate-for-kubernetes.html
 
-### 🎮 Nginx with Ingress Class Controller
+### Nginx with Ingress Class Controller
 
 The `nginx-with-ingress-class-controller` directory contains configuration files for deploying Nginx with a dedicated Ingress controller in a separate namespace.
 
@@ -180,7 +180,7 @@ kubectl apply -f nginx-with-ingress-class-controller/14-ingress-class.yaml
 kubectl apply -f nginx-with-ingress-class-controller/15-ingress.yaml
 ```
 
-### 💾 Nginx with Volume
+### Nginx with Volume
 
 The `nginx-with-volume` directory contains configuration files for deploying Nginx with various volume configurations.
 
@@ -232,7 +232,7 @@ kubectl get secret deploy-robot-secret -o jsonpath="{.data.token}" | base64 --de
 
 This repository demonstrates several key Kubernetes concepts:
 
-### 🔄 Deployments and Pods
+### Deployments and Pods
 
 Deployments manage the creation and scaling of pods. They ensure that a specified number of pod replicas are running at any given time.
 
@@ -259,7 +259,7 @@ spec:
         - containerPort: 8080
 ```
 
-### 🔌 Services
+### Services
 
 Services provide a stable endpoint to access pods. They abstract away the dynamic nature of pod creation and deletion.
 
@@ -267,7 +267,7 @@ Types of services demonstrated:
 - **NodePort**: Exposes the service on each node's IP at a static port (e.g., `nginx-with-service/2-webapp-hello-service-v1.yaml`)
 - **ClusterIP**: Exposes the service on a cluster-internal IP (e.g., `nginx-with-ingress/3-webapp-hello-service-v1.yaml`)
 
-### 🚦 Ingress
+### Ingress
 
 Ingress resources manage external access to services in a cluster, typically HTTP. They provide load balancing, SSL termination, and name-based virtual hosting.
 
@@ -294,7 +294,7 @@ spec:
               number: 80
 ```
 
-### 🔒 TLS/SSL with Ingress
+### TLS/SSL with Ingress
 
 Ingress resources can be configured to use TLS certificates for secure HTTPS connections.
 
@@ -322,7 +322,7 @@ spec:
               number: 80
 ```
 
-### ⚙️ ConfigMaps
+### ConfigMaps
 
 ConfigMaps store configuration data as key-value pairs, which can be consumed by pods as environment variables, command-line arguments, or configuration files.
 
@@ -337,7 +337,7 @@ data:
     Hola soy una configmap
 ```
 
-### 💾 Volumes
+### Volumes
 
 Volumes provide storage that can be mounted into containers. They can be backed by various storage systems.
 
@@ -365,7 +365,7 @@ spec:
             path: index.html
 ```
 
-### 🔑 Service Accounts and RBAC
+### Service Accounts and RBAC
 
 Service accounts provide an identity for processes running in pods. Role-Based Access Control (RBAC) defines what actions service accounts can perform.
 
@@ -387,7 +387,7 @@ rules:
   verbs: ["create", "delete"]
 ```
 
-### 🏷️ IngressClass
+### IngressClass
 
 IngressClass resources define the controller that should implement the Ingress. This allows for multiple Ingress controllers in a cluster.
 
