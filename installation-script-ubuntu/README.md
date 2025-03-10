@@ -1,9 +1,9 @@
-# Kubernetes Installation Scripts for Ubuntu
+# 🛠️ Kubernetes Installation Scripts for Ubuntu
 
-## Documentation
+## 📄 Documentation
 This directory contains scripts for installing Kubernetes on Ubuntu servers. These scripts automate the process of setting up a Kubernetes cluster with a master node and worker nodes.
 
-### master-node-setup.sh
+### 🖥️ master-node-setup.sh
 This script sets up a master node (control plane) for a Kubernetes cluster. It performs the following tasks:
 - Installs Docker and containerd
 - Installs kubectl, kubeadm, and kubelet
@@ -13,7 +13,7 @@ This script sets up a master node (control plane) for a Kubernetes cluster. It p
 - Sets up kubectl configuration
 - Deploys Calico network plugin
 
-### node-setup.sh
+### 🧩 node-setup.sh
 This script sets up a worker node for a Kubernetes cluster. It performs the following tasks:
 - Installs Docker and containerd
 - Installs kubectl, kubeadm, and kubelet
@@ -21,21 +21,21 @@ This script sets up a worker node for a Kubernetes cluster. It performs the foll
 - Configures kernel modules and system settings
 - Joins the Kubernetes cluster using the token provided by the master node
 
-## Usage
+## 📋 Usage
 
-### Setting up the Master Node
+### 🖥️ Setting up the Master Node
 1. Edit the script to set the `MASTERNODE` variable to your master node's hostname
 2. Make the script executable: `chmod +x master-node-setup.sh`
 3. Run the script: `./master-node-setup.sh`
 
-### Setting up Worker Nodes
+### 🧩 Setting up Worker Nodes
 1. Edit the script to set the `MASTERNODE` variable to your master node's hostname
 2. Update the `/etc/hosts` entry with the correct IP address of your master node
 3. Replace the `kubeadm join` command with the one provided by the master node during its initialization
 4. Make the script executable: `chmod +x node-setup.sh`
 5. Run the script: `./node-setup.sh`
 
-## Architecture diagram
+## 🏗️ Architecture diagram
 ```mermaid
 flowchart TD
     subgraph "Kubernetes Cluster"

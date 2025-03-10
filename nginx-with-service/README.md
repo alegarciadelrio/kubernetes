@@ -1,15 +1,15 @@
-# Basic Kubernetes Deployment
+# 🌐 Basic Kubernetes Deployment
 
-## Documentation
+## 📄 Documentation
 This deployment creates 6 pods with 1 service attached as NodePort. Ideally for local testing purposes. 
 
-### 1-webapp-hello-v1.yaml
+### 🚀 1-webapp-hello-v1.yaml
 It does the nginx pod deployment.
 
-### 2-webapp-hello-service-v1.yaml
+### 🔌 2-webapp-hello-service-v1.yaml
 It does the service nodport deployment.
 
-## Architecture diagram
+## 🏗️ Architecture diagram
 Creates 6 pods with 1 service attached as NodePort.
 
 ```mermaid

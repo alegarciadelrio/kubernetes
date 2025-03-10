@@ -1,26 +1,26 @@
-# Nginx with Ingress
+# 🚦 Nginx with Ingress
 
-## Documentation
+## 📄 Documentation
 This directory contains Kubernetes configurations for deploying Nginx with Ingress. It creates 2 pods with 2 services attached as ClusterIP, then creates an ingress to forward the traffic based on the host v1 or v2.
 
-### 1-webapp-hello-v1.yaml
+### 🌐 1-webapp-hello-v1.yaml
 Deploys the first version of the hello-app application.
 
-### 2-webapp-hello-v2.yaml
+### 🌐 2-webapp-hello-v2.yaml
 Deploys the second version of the hello-app application.
 
-### 3-webapp-hello-service-v1.yaml
+### 🔌 3-webapp-hello-service-v1.yaml
 Creates a ClusterIP service for the v1 deployment.
 
-### 4-webapp-hello-service-v2.yaml
+### 🔌 4-webapp-hello-service-v2.yaml
 Creates a ClusterIP service for the v2 deployment.
 
-### 5-ingress.yaml
+### 🚦 5-ingress.yaml
 Creates an Ingress resource that routes traffic based on the host header:
 - v1.test.com routes to the v1 service
 - v2.test.com routes to the v2 service
 
-## Usage
+## 📋 Usage
 Apply the configurations in the following order:
 
 ```bash
@@ -37,7 +37,7 @@ After applying, the applications will be accessible at:
 
 Note: You'll need to add entries to your `/etc/hosts` file to map these hostnames to your cluster's IP address.
 
-## Architecture diagram
+## 🏗️ Architecture diagram
 ```mermaid
 flowchart TD
     %% External traffic at the top

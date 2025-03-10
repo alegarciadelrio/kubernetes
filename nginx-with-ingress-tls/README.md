@@ -1,21 +1,21 @@
-# Nginx with Ingress TLS
+# 🔒 Nginx with Ingress TLS
 
-## Documentation
+## 📄 Documentation
 This directory contains Kubernetes configurations for deploying Nginx with TLS-enabled Ingress. It creates 1 pod with 1 service attached as ClusterIP, then creates an ingress to forward the traffic with TLS encryption.
 
-### 1-webapp-hello-v1.yaml
+### 🌐 1-webapp-hello-v1.yaml
 Deploys the hello-app application.
 
-### 3-webapp-hello-service-v1.yaml
+### 🔌 3-webapp-hello-service-v1.yaml
 Creates a ClusterIP service for the deployment.
 
-### 5-ingress.yaml
+### 🚦 5-ingress.yaml
 Creates an Ingress resource with TLS configuration that routes traffic to the service.
 
-### 6-secret.yaml
+### 🔐 6-secret.yaml
 Contains the TLS certificate and key as a Kubernetes Secret.
 
-## Usage
+## 📋 Usage
 Apply the configurations in the following order:
 
 ```bash
@@ -29,7 +29,7 @@ After applying, the application will be accessible at `https://test.rutamania.co
 
 Note: For testing with self-signed certificates, refer to the guide at https://segunale.blogspot.com/2024/09/self-signed-certificate-for-kubernetes.html
 
-## Architecture diagram
+## 🏗️ Architecture diagram
 ```mermaid
 flowchart TD
     %% External traffic at the top

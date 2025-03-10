@@ -1,30 +1,30 @@
-# Service Account for EKS and Azure DevOps
+# 🔑 Service Account for EKS and Azure DevOps
 
-## Documentation
+## 📄 Documentation
 This directory contains Kubernetes configuration for setting up a service account that can be used to connect Amazon EKS to Azure DevOps for CI/CD pipelines.
 
-### 1-service-account.yml
+### 🔑 1-service-account.yml
 This file contains multiple Kubernetes resources:
 
-1. **ServiceAccount**: `deploy-robot`
+1. **🤖 ServiceAccount**: `deploy-robot`
    - Creates a service account for deployment operations
    - `automountServiceAccountToken: false` for security
 
-2. **Secret**: `deploy-robot-secret`
+2. **🔐 Secret**: `deploy-robot-secret`
    - Creates a secret containing the service account token
    - Annotated to link it to the service account
 
-3. **Role**: `deploy-robot-role`
+3. **🔒 Role**: `deploy-robot-role`
    - Defines permissions for the service account
    - Grants specific permissions for deployments and pods
 
-4. **RoleBinding**: `global-rolebinding`
+4. **🔗 RoleBinding**: `global-rolebinding`
    - Binds the role to the service account within the default namespace
 
-5. **ClusterRoleBinding**: `cluster-role-binding`
+5. **🔗 ClusterRoleBinding**: `cluster-role-binding`
    - Grants cluster-admin privileges to the service account
 
-## Usage
+## 📋 Usage
 
 Apply the configuration:
 
@@ -40,7 +40,7 @@ kubectl get secret deploy-robot-secret -o jsonpath="{.data.token}" | base64 --de
 
 Use this token in Azure DevOps to authenticate with your EKS cluster.
 
-## Architecture diagram
+## 🏗️ Architecture diagram
 ```mermaid
 flowchart TD
     %% Service Account

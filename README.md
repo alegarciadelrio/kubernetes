@@ -8,7 +8,7 @@ This documentation provides a comprehensive guide to the Kubernetes Toolbox repo
   <img alt="Amazon EKS" src="https://img.shields.io/badge/Amazon%20EKS-%23FF9900?style=flat-square&logo=amazoneks&logoColor=white" />
 </p>
 
-## Table of Contents
+## 📑 Table of Contents
 
 1. [Overview](#overview)
 2. [Installation](#installation)
@@ -23,9 +23,9 @@ This documentation provides a comprehensive guide to the Kubernetes Toolbox repo
 4. [Service Account for EKS and Azure DevOps](#service-account-for-eks-and-azure-devops)
 5. [Key Kubernetes Concepts](#key-kubernetes-concepts)
 
-## Overview
+## 🔭 Overview
 
-The Kubernetes Toolbox repository provides a collection of Kubernetes configuration examples and installation scripts. It serves as a reference for setting up and configuring Kubernetes clusters with various components such as Nginx, Ingress controllers, TLS, volumes, and more. 🔭 Learn how to get started with Kubernetes Toolbox and then dive deeper into other advanced topics.
+The Kubernetes Toolbox repository provides a collection of Kubernetes configuration examples and installation scripts. It serves as a reference for setting up and configuring Kubernetes clusters with various components such as Nginx, Ingress controllers, TLS, volumes, and more. Learn how to get started with Kubernetes Toolbox and then dive deeper into other advanced topics.
 
 The repository is organized into several directories, each focusing on a specific aspect of Kubernetes configuration:
 
@@ -37,9 +37,9 @@ The repository is organized into several directories, each focusing on a specifi
 - `nginx-with-volume`: Nginx deployment with volume configurations
 - `service-account-for-eks-azure-devops`: Service account configuration for EKS with Azure DevOps
 
-## Installation
+## 🛠️ Installation
 
-### Master Node Setup
+### 🖥️ Master Node Setup
 
 The `installation-script-ubuntu/master-node-setup.sh` script automates the installation of Kubernetes on an Ubuntu server that will serve as the master node (control plane) of the cluster.
 
@@ -59,7 +59,7 @@ To use the script:
 2. Make the script executable: `chmod +x master-node-setup.sh`
 3. Run the script: `./master-node-setup.sh`
 
-### Worker Node Setup
+### 🧩 Worker Node Setup
 
 The `installation-script-ubuntu/node-setup.sh` script automates the installation of Kubernetes on Ubuntu servers that will serve as worker nodes in the cluster.
 
@@ -79,9 +79,9 @@ To use the script:
 4. Make the script executable: `chmod +x node-setup.sh`
 5. Run the script: `./node-setup.sh`
 
-## Configuration Examples
+## 📋 Configuration Examples
 
-### Nginx with Service
+### 🌐 Nginx with Service
 
 The `nginx-with-service` directory contains configuration files for deploying Nginx with a NodePort service, making it accessible from outside the cluster.
 
@@ -98,7 +98,7 @@ kubectl apply -f nginx-with-service/2-webapp-hello-service-v1.yaml
 
 After applying, the application will be accessible at `http://<node-ip>:30080`.
 
-### Nginx with Ingress
+### 🚦 Nginx with Ingress
 
 The `nginx-with-ingress` directory contains configuration files for deploying Nginx with Ingress, allowing host-based routing.
 
@@ -123,7 +123,7 @@ After applying, the applications will be accessible at:
 
 Note: You'll need to add entries to your `/etc/hosts` file to map these hostnames to your cluster's IP address.
 
-### Nginx with Ingress TLS
+### 🔒 Nginx with Ingress TLS
 
 The `nginx-with-ingress-tls` directory contains configuration files for deploying Nginx with TLS-enabled Ingress. More info to test certificate: 
 https://segunale.blogspot.com/2024/09/self-signed-certificate-for-kubernetes.html
@@ -147,7 +147,7 @@ After applying, the application will be accessible at `https://test.rutamania.co
 
 Note: For testing with self-signed certificates, refer to the guide at https://segunale.blogspot.com/2024/09/self-signed-certificate-for-kubernetes.html
 
-### Nginx with Ingress Class Controller
+### 🎮 Nginx with Ingress Class Controller
 
 The `nginx-with-ingress-class-controller` directory contains configuration files for deploying Nginx with a dedicated Ingress controller in a separate namespace.
 
@@ -180,7 +180,7 @@ kubectl apply -f nginx-with-ingress-class-controller/14-ingress-class.yaml
 kubectl apply -f nginx-with-ingress-class-controller/15-ingress.yaml
 ```
 
-### Nginx with Volume
+### 💾 Nginx with Volume
 
 The `nginx-with-volume` directory contains configuration files for deploying Nginx with various volume configurations.
 
@@ -205,7 +205,7 @@ kubectl apply -f nginx-with-volume/05-pod-configmap.yaml
 kubectl apply -f nginx-with-volume/03-service-node-port.yaml
 ```
 
-## Service Account for EKS and Azure DevOps
+## 🔑 Service Account for EKS and Azure DevOps
 
 The `service-account-for-eks-azure-devops` directory contains configuration for setting up a service account that can be used to connect Amazon EKS to Azure DevOps for CI/CD pipelines.
 
@@ -228,11 +228,11 @@ After applying, you can retrieve the token for use in Azure DevOps:
 kubectl get secret deploy-robot-secret -o jsonpath="{.data.token}" | base64 --decode
 ```
 
-## Key Kubernetes Concepts
+## 📚 Key Kubernetes Concepts
 
 This repository demonstrates several key Kubernetes concepts:
 
-### Deployments and Pods
+### 🔄 Deployments and Pods
 
 Deployments manage the creation and scaling of pods. They ensure that a specified number of pod replicas are running at any given time.
 
@@ -259,7 +259,7 @@ spec:
         - containerPort: 8080
 ```
 
-### Services
+### 🔌 Services
 
 Services provide a stable endpoint to access pods. They abstract away the dynamic nature of pod creation and deletion.
 
@@ -267,7 +267,7 @@ Types of services demonstrated:
 - **NodePort**: Exposes the service on each node's IP at a static port (e.g., `nginx-with-service/2-webapp-hello-service-v1.yaml`)
 - **ClusterIP**: Exposes the service on a cluster-internal IP (e.g., `nginx-with-ingress/3-webapp-hello-service-v1.yaml`)
 
-### Ingress
+### 🚦 Ingress
 
 Ingress resources manage external access to services in a cluster, typically HTTP. They provide load balancing, SSL termination, and name-based virtual hosting.
 
@@ -294,7 +294,7 @@ spec:
               number: 80
 ```
 
-### TLS/SSL with Ingress
+### 🔒 TLS/SSL with Ingress
 
 Ingress resources can be configured to use TLS certificates for secure HTTPS connections.
 
@@ -322,7 +322,7 @@ spec:
               number: 80
 ```
 
-### ConfigMaps
+### ⚙️ ConfigMaps
 
 ConfigMaps store configuration data as key-value pairs, which can be consumed by pods as environment variables, command-line arguments, or configuration files.
 
@@ -337,7 +337,7 @@ data:
     Hola soy una configmap
 ```
 
-### Volumes
+### 💾 Volumes
 
 Volumes provide storage that can be mounted into containers. They can be backed by various storage systems.
 
@@ -365,7 +365,7 @@ spec:
             path: index.html
 ```
 
-### Service Accounts and RBAC
+### 🔑 Service Accounts and RBAC
 
 Service accounts provide an identity for processes running in pods. Role-Based Access Control (RBAC) defines what actions service accounts can perform.
 
@@ -387,7 +387,7 @@ rules:
   verbs: ["create", "delete"]
 ```
 
-### IngressClass
+### 🏷️ IngressClass
 
 IngressClass resources define the controller that should implement the Ingress. This allows for multiple Ingress controllers in a cluster.
 
@@ -401,4 +401,3 @@ metadata:
     ingressclass.kubernetes.io/is-default-class: "true"
 spec:
   controller: nginx.org/ingress-controller
-
