@@ -82,9 +82,9 @@ flowchart TD
         
         %% Sample Application
         subgraph "Sample Application"
-            tsOperator <--> svc["Service: nginx\nAnnotation: tailscale.com/expose: true"]
+            tsOperator <--> svc["Service: nginx - Annotation: tailscale.com/expose: true"]
             svc --> deploy["Deployment: nginx"]
-            deploy --> pod["Pod: nginx\nContainer: nginx:latest\nPort: 80"]
+            deploy --> pod["Pod: nginx - Container: nginx:latest - Port: 80"]
         end
     end
     
