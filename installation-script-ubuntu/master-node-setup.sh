@@ -45,7 +45,6 @@ kubeadm version
 sudo swapoff -a
 sudo sed -i 's/^\/swap/#\/swap/' /etc/fstab
 
-
 # Enable the modules
 sudo bash -c 'cat << 'EOF' > /etc/modules-load.d/containerd.conf
 overlay

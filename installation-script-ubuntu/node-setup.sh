@@ -45,7 +45,6 @@ kubeadm version
 sudo swapoff -a
 sudo sed -i 's/^\/swap/#\/swap/' /etc/fstab
 
-
 # Enable the modules
 sudo bash -c 'cat << 'EOF' > /etc/modules-load.d/containerd.conf
 overlay
@@ -97,4 +96,3 @@ sudo kubeadm join $MASTERNODE:6443 --token uyyjy3.******************** \
 ############################## Run on the master node ##############################
 # kubectl taint nodes --all node.kubernetes.io/not-ready-
 # kubectl taint nodes --all node-role.kubernetes.io/control-plane-
-
