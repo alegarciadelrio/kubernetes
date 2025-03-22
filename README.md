@@ -20,6 +20,7 @@ This documentation provides a comprehensive guide to the Kubernetes Toolbox repo
    - [Nginx with Ingress TLS](#nginx-with-ingress-tls)
    - [Nginx with Ingress Class Controller](#nginx-with-ingress-class-controller)
    - [Nginx with Volume](#nginx-with-volume)
+   - [Tailscale Operator](#tailscale-operator)
 4. [Service Account for EKS and Azure DevOps](#service-account-for-eks-and-azure-devops)
 5. [Key Kubernetes Concepts](#key-kubernetes-concepts)
 
@@ -36,6 +37,7 @@ The repository is organized into several directories, each focusing on a specifi
 - `nginx-with-ingress-class-controller`: Advanced Nginx Ingress setup with dedicated controller
 - `nginx-with-volume`: Nginx deployment with volume configurations
 - `service-account-for-eks-azure-devops`: Service account configuration for EKS with Azure DevOps
+- `tailscale-operator`: Tailscale operator deployment for secure networking
 
 ## 🛠️ Installation
 
@@ -204,6 +206,59 @@ kubectl apply -f nginx-with-volume/05-pod-configmap.yaml
 # Create other resources as needed
 kubectl apply -f nginx-with-volume/03-service-node-port.yaml
 ```
+
+### Tailscale Operator
+
+The `tailscale-operator` directory contains configuration files for deploying and configuring the Tailscale Operator in a Kubernetes cluster. The Tailscale Operator allows you to expose Kubernetes services to your Tailscale network, enabling secure access without exposing them to the public internet.
+
+Key files:
+- `steps.sh`: Contains the Helm commands to install and configure the Tailscale Operator
+- `app-operator.yml`: Defines a sample Nginx deployment and service with the Tailscale annotation `tailscale.com/expose: "true"`
+- `tailscale-rbac..yml`: Contains the necessary RBAC configurations for Tailscale
+- `tailscale-secret.yml`: Contains a Kubernetes secret with the Tailscale authentication key
+
+To deploy the Tailscale Operator:
+
+1. Set up Tailscale ACL policy rules:
+```json
+{
+  "tagOwners": {
+    "tag:k8s-operator": [],
+    "tag:k8s": ["tag:k8s-operator"]
+  }
+}
+```
+
+2. Create an OAuth client for the operator in the Tailscale admin console with appropriate permissions
+
+3. Create the Tailscale namespace and RBAC resources:
+```bash
+kubectl apply -f tailscale-operator/tailscale-rbac..yml
+```
+
+4. Create the Tailscale authentication secret:
+```bash
+kubectl apply -f tailscale-operator/tailscale-secret.yml
+```
+
+5. Install the Tailscale Operator using Helm:
+```bash
+helm repo add tailscale https://pkgs.tailscale.com/helmcharts
+helm repo update
+helm upgrade --install tailscale-operator tailscale/tailscale-operator \
+  --namespace=tailscale \
+  --create-namespace \
+  --set-string oauth.clientId=<oauth_client_id> \
+  --set-string oauth.clientSecret=<oauth_client_secret> \
+  --wait
+```
+
+6. Deploy a sample application with Tailscale exposure:
+```bash
+kubectl apply -f tailscale-operator/app-operator.yml
+```
+
+After deployment, the services with the `tailscale.com/expose: "true"` annotation will be accessible via your Tailscale network, providing secure access without exposing them to the public internet.
 
 ## 🔑 Service Account for EKS and Azure DevOps
 
