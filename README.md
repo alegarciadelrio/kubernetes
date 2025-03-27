@@ -21,8 +21,10 @@ This documentation provides a comprehensive guide to the Kubernetes Toolbox repo
    - [Nginx with Ingress Class Controller](#nginx-with-ingress-class-controller)
    - [Nginx with Volume](#nginx-with-volume)
    - [Tailscale Operator](#tailscale-operator)
-4. [Service Account for EKS and Azure DevOps](#service-account-for-eks-and-azure-devops)
-5. [Key Kubernetes Concepts](#key-kubernetes-concepts)
+4. [Kubernetes Dashboard](#kubernetes-dashboard)
+5. [Docker Cleanup](#docker-cleanup)
+6. [Service Account for EKS and Azure DevOps](#service-account-for-eks-and-azure-devops)
+7. [Key Kubernetes Concepts](#key-kubernetes-concepts)
 
 ## 🔭 Overview
 
@@ -30,12 +32,14 @@ The Kubernetes Toolbox repository provides a collection of Kubernetes configurat
 
 The repository is organized into several directories, each focusing on a specific aspect of Kubernetes configuration:
 
-- `installation-script-ubuntu`: Scripts for installing Kubernetes on Ubuntu
+- `cluster-ubuntu`: Scripts for installing Kubernetes on Ubuntu
 - `nginx-with-service`: Basic Nginx deployment with NodePort service
 - `nginx-with-ingress`: Nginx deployment with Ingress configuration
 - `nginx-with-ingress-tls`: Nginx deployment with TLS-enabled Ingress
 - `nginx-with-ingress-class-controller`: Advanced Nginx Ingress setup with dedicated controller
 - `nginx-with-volume`: Nginx deployment with volume configurations
+- `kubernetes-dashboard`: Scripts for deploying and configuring the Kubernetes Dashboard
+- `docker-cleanup`: Utility script for cleaning up Docker containers and images
 - `service-account-for-eks-azure-devops`: Service account configuration for EKS with Azure DevOps
 - `tailscale-operator`: Tailscale operator deployment for secure networking
 
@@ -43,7 +47,7 @@ The repository is organized into several directories, each focusing on a specifi
 
 ### Master Node Setup
 
-The `installation-script-ubuntu/master-node-setup.sh` script automates the installation of Kubernetes on an Ubuntu server that will serve as the master node (control plane) of the cluster.
+The `cluster-ubuntu/master-node-setup.sh` script automates the installation of Kubernetes on an Ubuntu server that will serve as the master node (control plane) of the cluster.
 
 Key steps in the installation process:
 
@@ -63,7 +67,7 @@ To use the script:
 
 ### Worker Node Setup
 
-The `installation-script-ubuntu/node-setup.sh` script automates the installation of Kubernetes on Ubuntu servers that will serve as worker nodes in the cluster.
+The `cluster-ubuntu/node-setup.sh` script automates the installation of Kubernetes on Ubuntu servers that will serve as worker nodes in the cluster.
 
 Key steps in the installation process:
 
@@ -259,6 +263,71 @@ kubectl apply -f tailscale-operator/app-operator.yml
 ```
 
 After deployment, the services with the `tailscale.com/expose: "true"` annotation will be accessible via your Tailscale network, providing secure access without exposing them to the public internet.
+
+## 🖥️ Kubernetes Dashboard
+
+The `kubernetes-dashboard` directory contains scripts for deploying and configuring the Kubernetes Dashboard, a web-based UI for managing Kubernetes clusters.
+
+The Kubernetes Dashboard provides a user-friendly interface to:
+- Deploy containerized applications
+- View resource utilization
+- Troubleshoot applications
+- Manage cluster resources
+- Get an overview of your cluster's health
+
+Key components:
+- `kubernetes-dashboard.sh`: Script that automates the installation and configuration process
+
+To deploy the Kubernetes Dashboard:
+
+```bash
+cd kubernetes-dashboard
+./kubernetes-dashboard.sh
+```
+
+After installation, you can access the dashboard in two ways:
+
+1. Using NodePort:
+```
+https://<node-ip>:30443
+```
+
+2. Using Port Forwarding (Optional):
+```bash
+kubectl -n kubernetes-dashboard port-forward --address 0.0.0.0 svc/kubernetes-dashboard-kong-proxy 8443:443
+```
+Then access at `https://localhost:8443`
+
+The script creates a service account named `dashboard-admin` with cluster-admin privileges and generates a token for authentication. This token is displayed at the end of the script execution.
+
+## 🐳 Docker Cleanup
+
+The `docker-cleanup` directory contains a utility script for cleaning up Docker containers and images.
+
+Key components:
+- `dcleanup`: Script that stops and removes all Docker containers and images
+
+To use the Docker cleanup script:
+
+```bash
+cd docker-cleanup
+chmod +x dcleanup
+./dcleanup
+```
+
+Alternatively, you can move the script to a directory in your PATH for easy access:
+
+```bash
+sudo mv docker-cleanup/dcleanup /usr/local/bin/
+```
+
+Then run it from anywhere:
+
+```bash
+dcleanup
+```
+
+**⚠️ Warning**: This script will remove ALL Docker containers and images from your system. This action cannot be undone. Make sure you have backups or can rebuild any important images before running this script.
 
 ## 🔑 Service Account for EKS and Azure DevOps
 
