@@ -33,13 +33,14 @@ The Kubernetes Toolbox repository provides a collection of Kubernetes configurat
 The repository is organized into several directories, each focusing on a specific aspect of Kubernetes configuration:
 
 - `cluster-ubuntu`: Scripts for installing Kubernetes on Ubuntu
+- `docker-cleanup`: Utility script for cleaning up Docker containers and images
+- `docker-ubuntu`: Scripts for installing Docker on Ubuntu
+- `kubernetes-dashboard`: Scripts for deploying and configuring the Kubernetes Dashboard
 - `nginx-with-service`: Basic Nginx deployment with NodePort service
 - `nginx-with-ingress`: Nginx deployment with Ingress configuration
 - `nginx-with-ingress-tls`: Nginx deployment with TLS-enabled Ingress
 - `nginx-with-ingress-class-controller`: Advanced Nginx Ingress setup with dedicated controller
 - `nginx-with-volume`: Nginx deployment with volume configurations
-- `kubernetes-dashboard`: Scripts for deploying and configuring the Kubernetes Dashboard
-- `docker-cleanup`: Utility script for cleaning up Docker containers and images
 - `service-account-for-eks-azure-devops`: Service account configuration for EKS with Azure DevOps
 - `tailscale-operator`: Tailscale operator deployment for secure networking
 
