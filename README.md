@@ -21,6 +21,7 @@ This documentation provides a comprehensive guide to the Kubernetes Toolbox repo
    - [Nginx with Ingress Class Controller](#nginx-with-ingress-class-controller)
    - [Nginx with Volume](#nginx-with-volume)
    - [Tailscale Operator](#tailscale-operator)
+   - [MLflow Deployment](#mlflow-deployment)
 4. [Kubernetes Dashboard](#kubernetes-dashboard)
 5. [Docker Cleanup](#docker-cleanup)
 6. [Service Account for EKS and Azure DevOps](#service-account-for-eks-and-azure-devops)
@@ -36,6 +37,7 @@ The repository is organized into several directories, each focusing on a specifi
 - `docker-cleanup`: Utility script for cleaning up Docker containers and images
 - `docker-ubuntu`: Scripts for installing Docker on Ubuntu
 - `kubernetes-dashboard`: Scripts for deploying and configuring the Kubernetes Dashboard
+- `mlflow`: Manifests and scripts for deploying MLflow tracking server on Kubernetes
 - `nginx-with-service`: Basic Nginx deployment with NodePort service
 - `nginx-with-ingress`: Nginx deployment with Ingress configuration
 - `nginx-with-ingress-tls`: Nginx deployment with TLS-enabled Ingress
@@ -264,6 +266,44 @@ kubectl apply -f tailscale-operator/app-operator.yml
 ```
 
 After deployment, the services with the `tailscale.com/expose: "true"` annotation will be accessible via your Tailscale network, providing secure access without exposing them to the public internet.
+
+### MLflow Deployment
+
+The `mlflow` directory contains Kubernetes manifests and scripts for deploying MLflow, an open-source platform for managing the end-to-end machine learning lifecycle, on a Kubernetes cluster.
+
+Key files:
+- `1-namespace.yaml`: Creates a dedicated Kubernetes namespace for MLflow
+- `2-deployment.yaml`: Deploys the MLflow tracking server with PostgreSQL backend
+- `3-service.yaml`: Creates a Kubernetes service to expose the MLflow tracking server
+- `4-ingress.yaml`: Sets up an Ingress resource to expose MLflow externally with TLS
+- `mlflow-helm-setup.sh`: Script to install MLflow using Helm and configure Tailscale exposure
+
+There are two deployment options:
+
+**Option 1: Using Kubernetes Manifests**
+
+```bash
+kubectl apply -f mlflow/1-namespace.yaml
+kubectl apply -f mlflow/2-deployment.yaml
+kubectl apply -f mlflow/3-service.yaml
+kubectl apply -f mlflow/4-ingress.yaml
+```
+
+**Note:** Before applying `2-deployment.yaml`, you need to:
+1. Create a PostgreSQL database
+2. Update the connection string in the deployment file
+3. Create a Kubernetes secret named `regcred` for pulling the MLflow image
+
+**Option 2: Using Helm**
+
+```bash
+cd mlflow
+./mlflow-helm-setup.sh
+```
+
+After deployment, MLflow will be accessible at:
+- Within the cluster: `mlflow-tracking-service.mlflow.svc.cluster.local:5000`
+- Externally: `https://mlflow-tracking.local` (requires DNS configuration or hosts file entry)
 
 ## 🖥️ Kubernetes Dashboard
 
