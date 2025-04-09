@@ -40,7 +40,7 @@ Follow these steps to deploy the Tailscale Operator:
 
 3. Create the Tailscale namespace and RBAC resources:
 ```bash
-kubectl apply -f tailscale-rbac..yml
+kubectl apply -f tailscale-rbac.yml
 ```
 
 4. Create the Tailscale authentication secret (update with your actual Tailscale auth key):
