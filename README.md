@@ -566,3 +566,26 @@ metadata:
     ingressclass.kubernetes.io/is-default-class: "true"
 spec:
   controller: nginx.org/ingress-controller
+```
+
+## 🤝 Contributing
+
+Contributions to the Kubernetes Toolbox repository are welcome! Here's how you can contribute:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+Please make sure to update tests and documentation as appropriate.
+
+## 📄 License
+
+This project is licensed under the terms of the license included in the [LICENSE](LICENSE) file. Please see the LICENSE file for full details.
+
+---
+
+⭐ **Star this repository if you find it useful!** ⭐
+
+Last updated: April 2025
