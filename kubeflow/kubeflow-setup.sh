@@ -1,11 +1,11 @@
 #/bin/sh
 # Quick script to install kustomize and kubeflow in a kubernetes cluster.
 
-# Install kustomize
+# Install kustomize.
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 sudo cp kustomize /usr/bin
 
-# Install kubeflow
+# Install kubeflow, do git checkout with the last version.
 git clone https://github.com/kubeflow/manifests.git
 cd manifests
 git checkout v1.10.0
