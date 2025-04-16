@@ -10,3 +10,5 @@ git clone https://github.com/kubeflow/manifests.git
 cd manifests
 git checkout v1.10.0
 while ! kustomize build example | kubectl apply --server-side --force-conflicts -f -; do echo "Retrying to apply resources"; sleep 20; done
+kubectl annotate svc/istio-ingressgateway -n istio-system tailscale.com/expose=true
+
