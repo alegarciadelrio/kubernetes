@@ -1,5 +1,6 @@
 #/bin/sh
 # Quick script to install kustomize and kubeflow in a kubernetes cluster.
+# More about https://github.com/kubeflow/manifests?tab=readme-ov-file#installation
 
 # Install kustomize.
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
