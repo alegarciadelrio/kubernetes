@@ -6,7 +6,7 @@ docker rm $(docker ps -a -q)
 echo "Removing all images..."
 docker rmi $(docker images -q)
 echo "Removing all volumes..."
-docker volume prune
+docker volume prune --all
 echo "Removing all networks..."
 docker network prune
 echo "Docker cleanup complete!"
