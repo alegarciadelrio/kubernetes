@@ -9,4 +9,7 @@ echo "Removing all volumes..."
 docker volume prune --all
 echo "Removing all networks..."
 docker network prune
+echo "Removing builder cache..."
+docker builder prune -f
 echo "Docker cleanup complete!"
+
